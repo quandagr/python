@@ -9,10 +9,9 @@ def get_Vehicle():
     try:
         conn= get_connection()
         cur = conn.cursor(cursor_factory = RealDictCursor)
-        cur.execute("""
-                        select * from Vehicle
-                       
-                """)
+        cur.execute(
+            'select * from "vehicle"'
+            )
         rows = cur.fetchall()
         cur.close()
         conn.close()
@@ -32,7 +31,7 @@ def create_Vehicle():
                     insert into vehicle
                     (vehicle_id, license_plate,model )
                     values 
-                    (%s, %s, %s,)
+                    (%s, %s, %s)
             """, (data["vehicle_id"],data["license_plate"], data["model"]))
         conn.commit()
         cur.close()

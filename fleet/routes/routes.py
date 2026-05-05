@@ -9,10 +9,9 @@ def get_appointments():
     try:
         conn= get_connection()
         cur = conn.cursor(cursor_factory = RealDictCursor)
-        cur.execute("""
-                        select * from Routes 
-                       
-                """)
+        cur.execute(
+            'select * from "routes"'
+            )
         rows = cur.fetchall()
         cur.close()
         conn.close()
@@ -32,7 +31,7 @@ def create_routes():
                     insert into routes
                     ( routes_id, date, service_zone)
                     values 
-                    (%s, %s, %s,)
+                    (%s, %s, %s)
             """, (data["routes_id"], data["date"] , data["service_zone"]))
         conn.commit()
         cur.close()

@@ -9,10 +9,9 @@ def get_packages():
     try:
         conn= get_connection()
         cur = conn.cursor(cursor_factory = RealDictCursor)
-        cur.execute("""
-                        select * from packages
-                       
-                """)
+        cur.execute(
+            'select * from "packages"'
+            )
         rows = cur.fetchall()
         cur.close()
         conn.close()
@@ -32,7 +31,7 @@ def create_packages():
                     insert into packages
                     (packages_id, description, weight)
                     values 
-                    (%s, %s, %s,)
+                    (%s, %s, %s)
             """, (data["packages_id"], data["description"] , data["weight"]))
         conn.commit()
         cur.close()
