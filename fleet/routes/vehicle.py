@@ -4,7 +4,7 @@ from database import get_connection
 
 Vehicle = Blueprint("Vehicle", __name__)
 
-Vehicle.route("/")
+@Vehicle.route("/")
 def get_Vehicle():
     try:
         conn= get_connection()
